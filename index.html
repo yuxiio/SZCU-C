@@ -1,170 +1,172 @@
 <html>
-    <head>
-        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-        <title>随机点名器</title>
-        <style>
-            *{
-                margin:0;
-                padding:0;
-            }
-            #main{
-                margin:100px;
-                /* background:#abcdef; */
-                /* background: https://s1.328888.xyz/2022/05/20/d2g8d.jpg; */
-                background: url(https://s1.328888.xyz/2022/05/20/d2g8d.jpg) 40%;
-                width:800px;
-                /* padding:50px; */
-                height: 800px;
-                border-radius:50%;
-                box-shadow:0 2px 12px #666666;
-            }
 
-            #box{
-                position: relative;
-                top: 500px;
-                background:#ff5511;
-                margin:50px;
-                padding:20px;
-                font-size:55px;
-                font-weight:bold;
-                border-radius:15px 15px 15px 15px;
-                box-shadow:0 2px 12px #666666;
-            }
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <title>随机点名器</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
 
-            #bt{
-                width:100px;
-                font-size:20px;
-                font-weight:bold;
-                background-color:green;
-                border-radius:8px 8px 8px 8px;
-                box-shadow:0 2px 12px #666666;
-                cursor:pointer;
-                padding:5px;
-            }
-        </style>
+        #main {
+            background: url(https://s1.328888.xyz/2022/05/20/d2g8d.jpg);
+            background-size: cover;
+            width: 700px;
+            /* padding:50px; */
+            height: 700px;
+            border-radius: 50%;
+            box-shadow: 0 2px 12px #666666;
+        }
 
-    </head>
-    <body>
-        <center>
-            <div id="main">
-                <div id="box">随机点名器</div>
-                <button id="bt" onclick="doit()">开 始</button>
-            </div>
-        </center>
+        #box {
+            position: relative;
+            top: 500px;
+            background: #ff5511;
+            margin: 50px;
+            padding: 20px;
+            font-size: 55px;
+            font-weight: bold;
+            border-radius: 15px 15px 15px 15px;
+            box-shadow: 0 2px 12px #666666;
+        }
+
+        #bt {
+            width: 100px;
+            font-size: 20px;
+            font-weight: bold;
+            background-color: green;
+            border-radius: 8px 8px 8px 8px;
+            box-shadow: 0 2px 12px #666666;
+            cursor: pointer;
+            padding: 5px;
+        }
+    </style>
+
+</head>
+
+<body>
+    <center>
+        <div id="main">
+            <div id="box">随机点名器</div>
+            <button id="bt" onclick="doit()">开 始</button>
+        </div>
+    </center>
 
 
-        <script>
-            //准备数据 用数组保存学生姓名
-          var namelist=[
+    <script>
+        //准备数据 用数组保存学生姓名
+        var namelist = [
             "郭光明",
-          "卿书洋",
-          "覃宇桢",
-          "陈宇豪",
-          "邹鑫",
-          "王睿航",
-          "符江华",
-          "沙家琪",
-          "徐淼",
-          "张亚川",
-          "葛腾",
-          "冯彬",
-          "吴雨阳",
-          "刘东林",
-          "石天成",
-          "陆超星",
-          "朱典",
-          "张冰冰",
+            "卿书洋",
+            "覃宇桢",
+            "陈宇豪",
+            "邹鑫",
+            "王睿航",
+            "符江华",
+            "沙家琪",
+            "徐淼",
+            "张亚川",
+            "葛腾",
+            "冯彬",
+            "吴雨阳",
+            "刘东林",
+            "石天成",
+            "陆超星",
+            "朱典",
+            "张冰冰",
 
-          "何灿",
-          "杨旭",
-          "丁智滔",
-          "韦默冉",
-          "舒嘉欣",
-          "彭康",
-          "赵逸",
-          "孙芊蔚",
-          "郑景程",
-          "黄奕皓",
-          "朱杉杉",
-          "张伟杰",
-          "唐正",
-          "周媛",
-          "吴雪儿",
-          "张宇",
-          "杨春",
-          "郭佩",
-          "高骏鹏",
-          "丁松明",
-          "王钦",
-          "高磊",
-          "张道国",
-          "谢轩豪",
-          "黄宇浩",
-          "陈玉颖",
-          "刘厚钊",
-          "温雅",
-          "殷华君",
-          "张锦文",
+            "何灿",
+            "杨旭",
+            "丁智滔",
+            "韦默冉",
+            "舒嘉欣",
+            "彭康",
+            "赵逸",
+            "孙芊蔚",
+            "郑景程",
+            "黄奕皓",
+            "朱杉杉",
+            "张伟杰",
+            "唐正",
+            "周媛",
+            "吴雪儿",
+            "张宇",
+            "杨春",
+            "郭佩",
+            "高骏鹏",
+            "丁松明",
+            "王钦",
+            "高磊",
+            "张道国",
+            "谢轩豪",
+            "黄宇浩",
+            "陈玉颖",
+            "刘厚钊",
+            "温雅",
+            "殷华君",
+            "张锦文",
 
-          "李伯乐",
+            "李伯乐",
 
-          "李唯伊",
-          "马俊杰",
-          "陈欣",
-          "龙婧",
-          "邹金城",
-          "刘毅",
-          "张景森",
-          "谢鑫",
-          "唐铭阳",
-          "赵恩东",
-          "赵依然",
-          "郑智杰",
-          "解仕猷",
-          "孙程瀛",
-          "杨霁月",
-          "刘宗杰",
+            "李唯伊",
+            "马俊杰",
+            "陈欣",
+            "龙婧",
+            "邹金城",
+            "刘毅",
+            "张景森",
+            "谢鑫",
+            "唐铭阳",
+            "赵恩东",
+            "赵依然",
+            "郑智杰",
+            "解仕猷",
+            "孙程瀛",
+            "杨霁月",
+            "刘宗杰",
         ];
-          var btNode = document.getElementById('bt')
-          var boxNode = document.getElementById('box')
-          var timer
-          var flag =1
-            //点击开始按钮
-          function doit(){
-            if(flag){
-              start()
-              btNode.style.backgroundColor= "red"
-              btNode.innerText="暂停"
-              flag = 0
-            }else{
-              stop()
-              btNode.style.backgroundColor = "green"
-              btNode.innerText="开始"
+        var btNode = document.getElementById('bt')
+        var boxNode = document.getElementById('box')
+        var timer
+        var flag = 1
+        //点击开始按钮
+        function doit() {
+            if (flag) {
+                start()
+                btNode.style.backgroundColor = "red"
+                btNode.innerText = "暂停"
+                flag = 0
+            } else {
+                stop()
+                btNode.style.backgroundColor = "green"
+                btNode.innerText = "开始"
 
-              flag = 1
+                flag = 1
             }
-          }
+        }
 
-          //点击开始后开始做的事 设置定时任务随机抽取学生
-          function start(){
-            timer = setInterval(function(){
-              var num = random(0,namelist.length)
-              // console.log(num)
-              //显示到页面
-              boxNode.innerText = namelist[num]
+        //点击开始后开始做的事 设置定时任务随机抽取学生
+        function start() {
+            timer = setInterval(function () {
+                var num = random(0, namelist.length)
+                // console.log(num)
+                //显示到页面
+                boxNode.innerText = namelist[num]
 
-            },85)
-          }
-            //点击暂停 清除定时器
-          function stop (){
+            }, 85)
+        }
+        //点击暂停 清除定时器
+        function stop() {
             clearInterval(timer)
 
-          }
-            // 产生随机数 用于数据数组的下标使用
-          function random(a,b){
+        }
+        // 产生随机数 用于数据数组的下标使用
+        function random(a, b) {
             return parseInt(Math.random() * (b - a) + a)
-          }
+        }
 
-        </script>
+    </script>
 </body>
+
 </html>
