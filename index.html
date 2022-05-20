@@ -1,270 +1,170 @@
-<!DOCTYPE html>
 <html>
+    <head>
+        <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+        <title>随机点名器</title>
+        <style>
+            *{
+                margin:0;
+                padding:0;
+            }
+            #main{
+                margin:100px;
+                /* background:#abcdef; */
+                /* background: https://s1.328888.xyz/2022/05/20/d2g8d.jpg; */
+                background: url(https://s1.328888.xyz/2022/05/20/d2g8d.jpg) 40%;
+                width:800px;
+                /* padding:50px; */
+                height: 800px;
+                border-radius:50%;
+                box-shadow:0 2px 12px #666666;
+            }
 
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-  <title>C programming language, Fall 2022</title>
+            #box{
+                position: relative;
+                top: 500px;
+                background:#ff5511;
+                margin:50px;
+                padding:20px;
+                font-size:55px;
+                font-weight:bold;
+                border-radius:15px 15px 15px 15px;
+                box-shadow:0 2px 12px #666666;
+            }
 
-  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-  <link rel="stylesheet" href="./styles/bootstrap.min.css">
-  <link rel="stylesheet" href="./styles/font-awesome.min.css">
-  <link rel="stylesheet" href="./styles/group.css">
+            #bt{
+                width:100px;
+                font-size:20px;
+                font-weight:bold;
+                background-color:green;
+                border-radius:8px 8px 8px 8px;
+                box-shadow:0 2px 12px #666666;
+                cursor:pointer;
+                padding:5px;
+            }
+        </style>
 
-
-  <style>
-    /* .container {
-   width: 80%;  /*块级元素充满页面 定宽必备 /
-   margin-left: auto;
-   margin-right: auto;
-  /*或者 margin：0 auto;/
-} */
-
-    body {
-      width: 100%;
-      align-content: center;
-    }
-
-    table {
-      font-family: arial, sans-serif;
-      border-collapse: collapse;
-      width: 100%;
-    }
-
-    td,
-    th {
-      border: 1px solid #dddddd;
-      text-align: left;
-      padding: 8px;
-    }
-
-    /* tr:nth-child(even) {
-  background-color:#E9D9EA;
-} */
-
-    /* tr:nth-child(3n){
-	background-color: #FFC;
-	} */
-
-    .schedule-table .week {
-      text-align: center;
-      vertical-align: middle;
-    }
-
-    .schedule-table .date {
-      vertical-align: middle;
-    }
-
-    .schedule-table tbody tr:hover {
-      background-color: unset;
-    }
-
-    .schedule-table tbody tr:hover td:not(.week) {
-      background-color: rgba(68, 106, 177, 0.075);
-    }
-
-    .schedule-table tr.odd td:first-child {
-      background-color: rgba(68, 106, 177, 0.075);
-    }
-
-    a:hover {
-      color: #0A4B8C;
-    }
-
-    .btn {
-      color: #0A4B8C;
-      border-color: #0A4B8C;
-    }
-
-    .btn-sm {
-      padding: 0.15rem 0.2rem;
-    }
-
-    .btn:hover {
-      color: white;
-      background-color: #0A4B8C;
-    }
-
-    .btn:focus {
-      outline: 0;
-      box-shadow: 0 0 0 .2rem rgba(68, 106, 177, 0.075);
-    }
-
-    .fa {
-      width: 1rem;
-    }
-
-    .faded {
-      color: rgba(0, 0, 0, 0.25);
-    }
-  </style>
-
-
-  <!--#E9D9EA紫色-->
-
-
-<body>
-
-  <div class="container">
-
-    <table>
-      <tbody>
-        <tr>
-          <td style="border:0"><a href="http://www.nju.edu.cn/">
-              <img src="./images/NJU-Logo.png" width="80"></a>
-          </td>
-          <td style="border:0">
-            <h1>
-              <font color="#0A4B8C">C programming language</font>
-            </h1>
-            <h3>Fall 2022, SuZhou City University</h3>
-          </td>
-        </tr>
-      </tbody>
-    </table>
-    <br>
-
-    <p></p>
-    <h3>
-      <font color="#0A4B8C">News</font>
-    </h3>
-    <ul>
-      <li>       </li>
-      <li>       </li>
-    </ul>
-
-    <h3>
-      <font color="#0A4B8C">Course Information</font>
-    </h3>
-    <p></p>
-    <ul>
-      <li>Class Hour and Classroom:    </li>
-      <li>Lab Hour and Classroom:      </li>
-      <li>Office Hour:                 </li>
-      <li>Instructors:                 </li>
-      <li>Teaching Assistants:                         </li>
-      <li>Textbooks and References:
-        <ul>
-          <li>Textbooks:               </li>
-          <li>References:              </li>
-        </ul>
-      </li>
-    </ul>
-
-
-    <h3>
-      <font color="#0A4B8C">Course Schedule</font>
-    </h3>
-    <div style="text-align: center; margin: 0.5rem; padding: 0.5rem; overflow-x: auto;">
-      <!-- Current Deadlines
-      <a href="/oj/#/assignments/lab11" class="btn btn-outline">
-        <i class="fa fa-flask"></i>
-        Submit Lab11 before Dec 26
-      </a>
-      <a href="/oj/#/assignments/proj04" class="btn btn-outline">
-        <i class="fa fa-book"></i>
-        Submit Proj04 before Dec 26
-      </a> -->
-    </div>
-    <table class="table table-responsive table-hover schedule-table">
-      <tbody>
-        <tr>
-          <th width="5%" class="weeknum">Week</th>
-          <th>Date</th>
-          <th>Lectures</th>
-          <th>Assignments</th>
-        </tr>
-
-        <!-- Week 4 -->
-        <tr class="odd">
-          <td rowspan="2" class="week">4</td>
-          <td class="date">Sep 22 (Wed)</td>
-          <td>
-            Wang Hui: <i>Course Introduction</i><br />
-            <a href="./pdf/ch0-intro2C.pdf" class="btn btn-sm">Slides</a>
-            <a href="" class="btn btn-sm">Code</a>
-          </td>
-          <td></td>
-        </tr>
-        <tr>
-          <td class="date">Sep 26 (Sun)</td>
-          <td class="date">
-            TAs: <i>Lab Introduction</i>
-          </td>
-          <td>
-            <i class="fa fa-flask"></i>
-            Lab 00: <i>Set up a C environment</i><br />
-            <a href="" class="btn btn-sm">Tutorials</a>
-            <a href="" class="btn btn-sm">Code</a>
-            <span class="faded">(Due Oct 3)</span>
-          </td>
-        </tr>
-
-        
-
-        <!-- Week 6 -->
-        <tr class="odd">
-          <td class="week">6</td>
-          <td colspan="3" style="text-align: center;">National Day Holiday</td>
-        </tr>
-
-        <!-- Week 17 -->
-        <tr>
-          <td rowspan="3" class="week">17</td>
-          <td rowspan="2" class="date">Dec 20 (Mon)</td>
-          <td>
-            Wang Hui: <i>C Array I</i><br />
-            <a href="./pdf/ch7-array.pdf" class="btn btn-sm">Slides</a>
-          </td>
-          <td>
-          </td>
-        </tr>
-        <tr>
-          <td class="date">
-            TAs: <i>Just For Fun Topic: IOStreams</i></br>
-            <a href="" class="btn btn-sm">Slides</a>
-          </td>
-          <td>
-            <div>
-              <i class="fa fa-flask"></i>
-              Lab 11: <i>C Array I</i><br />
-              <a href="" class="btn btn-sm">Tutorials</a>
-              <a href="" class="btn btn-sm ">Code</a>
-              <span class="faded">(Due Dec 26)</span>
+    </head>
+    <body>
+        <center>
+            <div id="main">
+                <div id="box">随机点名器</div>
+                <button id="bt" onclick="doit()">开 始</button>
             </div>
-          </td>
-        </tr>
-        <tr>
-          <td class="date">Dec 22 (Wed)</td>
-          <td>
-            Wang Hui: <i>Final Review</i><br />
-          </td>
-          <td></td>
-        </tr>
+        </center>
 
-      </tbody>
-    </table>
 
-    <p></p>
-    <h3>
-      <font color="#0A4B8C">Reference Materials</font>
-    </h3>
-    <ul>
-      <li></li>
-      
-    </ul>
+        <script>
+            //准备数据 用数组保存学生姓名
+          var namelist=[
+            "郭光明",
+          "卿书洋",
+          "覃宇桢",
+          "陈宇豪",
+          "邹鑫",
+          "王睿航",
+          "符江华",
+          "沙家琪",
+          "徐淼",
+          "张亚川",
+          "葛腾",
+          "冯彬",
+          "吴雨阳",
+          "刘东林",
+          "石天成",
+          "陆超星",
+          "朱典",
+          "张冰冰",
 
-    <div class="footer">
-      <p style="margin-bottom: 0;">
-        Previous years:
-        
-      </p>
-      <p>
-        
-      </p>
-    </div>
+          "何灿",
+          "杨旭",
+          "丁智滔",
+          "韦默冉",
+          "舒嘉欣",
+          "彭康",
+          "赵逸",
+          "孙芊蔚",
+          "郑景程",
+          "黄奕皓",
+          "朱杉杉",
+          "张伟杰",
+          "唐正",
+          "周媛",
+          "吴雪儿",
+          "张宇",
+          "杨春",
+          "郭佩",
+          "高骏鹏",
+          "丁松明",
+          "王钦",
+          "高磊",
+          "张道国",
+          "谢轩豪",
+          "黄宇浩",
+          "陈玉颖",
+          "刘厚钊",
+          "温雅",
+          "殷华君",
+          "张锦文",
 
-  </div> <!-- /container -->
+          "李伯乐",
 
+          "李唯伊",
+          "马俊杰",
+          "陈欣",
+          "龙婧",
+          "邹金城",
+          "刘毅",
+          "张景森",
+          "谢鑫",
+          "唐铭阳",
+          "赵恩东",
+          "赵依然",
+          "郑智杰",
+          "解仕猷",
+          "孙程瀛",
+          "杨霁月",
+          "刘宗杰",
+        ];
+          var btNode = document.getElementById('bt')
+          var boxNode = document.getElementById('box')
+          var timer
+          var flag =1
+            //点击开始按钮
+          function doit(){
+            if(flag){
+              start()
+              btNode.style.backgroundColor= "red"
+              btNode.innerText="暂停"
+              flag = 0
+            }else{
+              stop()
+              btNode.style.backgroundColor = "green"
+              btNode.innerText="开始"
+
+              flag = 1
+            }
+          }
+
+          //点击开始后开始做的事 设置定时任务随机抽取学生
+          function start(){
+            timer = setInterval(function(){
+              var num = random(0,namelist.length)
+              // console.log(num)
+              //显示到页面
+              boxNode.innerText = namelist[num]
+
+            },85)
+          }
+            //点击暂停 清除定时器
+          function stop (){
+            clearInterval(timer)
+
+          }
+            // 产生随机数 用于数据数组的下标使用
+          function random(a,b){
+            return parseInt(Math.random() * (b - a) + a)
+          }
+
+        </script>
 </body>
-
 </html>
